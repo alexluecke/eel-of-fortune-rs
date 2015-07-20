@@ -9,6 +9,9 @@ fn main() {
     let lines: Vec<_> = reader.lock().lines().collect();
     let combos = create_strings();
 
+    // TODO: Maybe split this map into k different mappings to pass to each thread. In other words,
+    // make one hash['aaaaa'] through hash['ccccc'], hash['ddddd'] through hash['fffff'] ...
+    // through hash['zzzzz'], then pass each one of these to their own thread.
     let mut map: HashMap<String, usize> = create_hash(&combos);
 
     //map.insert("aaaaa", 0);
