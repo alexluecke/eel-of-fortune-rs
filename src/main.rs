@@ -37,6 +37,9 @@ fn problem(word: &str, offensive: &str) -> bool {
 
 fn create_hash(sv: &Vec<String>) -> HashMap<String, usize> {
     let mut map: HashMap<String, usize> = HashMap::new();
+
+    // TODO: complaining that borrowed s can't be moved, which makes sense, but I don't know how to
+    // solve this issue. Do I need a Box? Reference counter? What?
     for s in sv.iter() {
         map.insert(*s, 0);
     }
@@ -47,6 +50,8 @@ fn create_strings() -> Vec<String> {
     let alphabet = "abcdefghijklmnopqrstuvwxyz".to_string();
     let length = alphabet.len();
     let mut v: Vec<String> = Vec::new();
+
+    // TODO: There has got to be a better way to do this. I just don't have a clue.
     for i in (0..length) {
         for ii in (0..length) {
             for iii in (0..length) {
